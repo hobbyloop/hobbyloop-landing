@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Visual from "@/components/commons/Visual";
+import Header from "@/components/commons/Header";
+import Footer from "@/components/commons/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +19,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ko" className={inter.className}>
+      <head></head>
+      <body className="flex relative flex-col w-full items-center">
+        <Header />
+        <Visual />
+        <main className="bg-red-100 h-screen flex w-full flex-col">
+          <section className="flex gap-4 bg-orange-300 justify-center h-[50px] items-center">
+            <div>
+              <Link href="/company">업체용tab 버튼</Link>
+            </div>
+            <div>
+              <Link href="/member">회원용tab 버튼</Link>
+            </div>
+          </section>
+          <section className="grow w-full flex items-center bg-rose-50 flex-col">
+            {children}
+          </section>
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
