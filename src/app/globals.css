@@ -6,6 +6,15 @@
 
 html,
 body {
-  height: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.li:nth-child(2n) {
+  border-left: 2px solid #fff;
+  text-indent: 14px;
 }
