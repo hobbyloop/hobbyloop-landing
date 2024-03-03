@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/Image/logo.png";
+import styled from "styled-components";
 type BusinessInfor = {
   id: number;
   title: string;
@@ -23,9 +26,62 @@ const businessLink: BusinessLink[] = [
   { id: 2, linkName: "개인정보처리방침", link: "" },
   { id: 3, linkName: "서비스 이용약관", link: "" },
 ];
+
+const AppDownloadFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lavenderblush; */
+`;
+
+const DownLoadTitle = styled.span`
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 40px;
+`;
+
+const DownLoadSubTitle = styled.span`
+  color: #bfbfbf;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 27px;
+`;
+
+const Button = styled.button`
+  width: 147px;
+  height: 44px;
+  background-color: #ff5f05;
+  border-radius: 5px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+const Hr = styled.div`
+  width: 55%;
+  border: 1px solid #515151;
+  margin: 64px auto;
+`;
+
 export default function Footer() {
   return (
     <footer className="bg-neutral-600 md:pt-[64px] md:pb-[70px] py-[72px]">
+      <AppDownloadFooter>
+        <DownLoadTitle>
+          이 모든 서비스를
+          <br /> 하비루프에서 경험 해보세요!
+        </DownLoadTitle>
+        <DownLoadSubTitle>하비루프 앱 다운로드</DownLoadSubTitle>
+        <ButtonWrapper>
+          <Button>Goggle Play</Button>
+          <Button>App Store</Button>
+        </ButtonWrapper>
+      </AppDownloadFooter>
+      <Hr />
       <div className="m-full md:max-w-[527px] mx-auto max-w-[335px]">
         <h1 className="text-base text-neutral-10 font-bold ">사업자 정보</h1>
         <ul className="text-xs text-neutral-10 md:pt-[15px] pb-[24px] flex w-[317px] gap-[15px] flex-wrap">
