@@ -15,7 +15,7 @@ const config: Config = {
   theme: {
     screens: {
       sm: "640px",
-      md: "768px",
+      md: "800px",
       lg: "1200px",
     },
     extend: {
@@ -24,7 +24,6 @@ const config: Config = {
           10: "#ffffff",
           80: "#E8E8E8",
           90: "#A8A8A8",
-          150: "A8A8A8",
           500: "#FF5F05",
           600: "#333333",
           890: "#141414",

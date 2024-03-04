@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${pre.variable}`}>
       <head></head>
-      <body className="relative mx-auto flex w-full flex-col">
+      <body className="relative mx-auto flex w-full flex-col min-w-[360px]">
         <main className="relative grow">
           <Header />
           <div className="">{children}</div>
