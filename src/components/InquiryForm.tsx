@@ -21,7 +21,7 @@ const InnerContainer = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: lavender;
+  /* background-color: lavender; */
 `;
 
 const H1 = styled.h1`
