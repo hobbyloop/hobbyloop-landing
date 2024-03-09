@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/commons/Header";
 import Footer from "@/components/commons/Footer";
 import localFont from "next/font/local";
+import StyledJsxRegistry from "@/lib/registry";
 
 const pre = localFont({
   src: "../../public/font/PretendardVariable.ttf",
@@ -23,11 +24,13 @@ export default function RootLayout({
     <html lang="ko" className={`${pre.variable}`}>
       <head></head>
       <body className="relative mx-auto flex w-full flex-col min-w-[360px]">
-        <main className="relative grow">
-          <Header />
-          <div className="">{children}</div>
-        </main>
-        <Footer />
+        <StyledJsxRegistry>
+          <main className="relative grow">
+            <Header />
+            <div className="">{children}</div>
+          </main>
+          <Footer />
+        </StyledJsxRegistry>
       </body>
     </html>
   );

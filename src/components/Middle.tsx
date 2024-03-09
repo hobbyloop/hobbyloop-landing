@@ -1,26 +1,24 @@
 "use client";
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import CompanyIcon from "../../public/Image/company.icon.svg";
-import MemberIcon from "../../public/Image/member.icon.svg";
 import Image from "next/image";
+import "../app/globals.css";
+import { TABS, useSelectedTabStore } from "@/store/useStore";
 import MemberSec from "./MemberSec";
 import CompanySec from "./CompanySec";
-import "../app/globals.css";
+
+export interface ITabs {
+  id: number;
+  name: string;
+  icon: string;
+}
 
 export default function Middle() {
-  interface ITabs {
-    id: number;
-    name: string;
-    icon: string;
-  }
+  // const [selectedTab, setSelectedTab] = useState(TABS[0]);
 
-  const TABS: ITabs[] = [
-    { id: 1, name: "회원용", icon: MemberIcon },
-    { id: 2, name: "업체용", icon: CompanyIcon },
-  ];
+  const { selectedTab } = useSelectedTabStore();
+  const selectedUpdate = useSelectedTabStore((state) => state.selectedUpdate);
 
-  const [selectedTab, setSelectedTab] = useState(TABS[0]);
   return (
     <Container>
       <SelectSection>
@@ -28,8 +26,10 @@ export default function Middle() {
           return (
             <Tab
               key={tab.id}
-              selected={selectedTab.id === tab.id}
-              onClick={() => setSelectedTab(tab)}
+              onClick={() => {
+                selectedUpdate(tab);
+              }}
+              // selected={selectedTab.id === tab.id}
             >
               <div className="flex flex-col content-center gap-4">
                 <Image src={tab.icon} alt="아이콘 이미지" />
@@ -60,7 +60,7 @@ const SelectSection = styled.div`
   height: 250px;
 `;
 
-const Tab = styled.div<{ selected: boolean }>`
+const Tab = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,10 +69,10 @@ const Tab = styled.div<{ selected: boolean }>`
   height: 130px;
   border-bottom: 2px solid #ebebeb;
   cursor: pointer;
-
-  ${(props) =>
-    props.selected &&
-    css`
-      border-color: #ff5f05;
-    `}
 `;
+
+// ${(props) =>
+//   props.selected &&
+//   css`
+//     border-color: #ff5f05;
+//   `}
