@@ -1,11 +1,6 @@
-"use client";
-
-import Link from "next/link";
-import Button from "./commons/Button";
-import useSelectedTabStore from "@/store/useStore";
+import VisualButton from "./VisualButton";
 
 export default function VisualTextArticle() {
-  const { selectedTab } = useSelectedTabStore();
   return (
     <>
       <div className="md:row-[1/2] flex md:gap-[40px] md:justify-normal justify-center w-full">
@@ -20,13 +15,7 @@ export default function VisualTextArticle() {
           </p>
         </div>
       </div>
-      {selectedTab.id === 1 ? (
-        <div>회원용 버튼 추가해야함</div>
-      ) : (
-        <Button className="text-neutral-80 bg-neutral-500 w-full md:w-[147px] h-[44px] order-3 md:order-2 col-start-1	justify-self-end lg:mt-[-54px] ">
-          <Link href="#">로그인</Link>
-        </Button>
-      )}
+      <VisualButton />
     </>
   );
 }

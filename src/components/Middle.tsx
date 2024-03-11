@@ -29,7 +29,7 @@ export default function Middle() {
               onClick={() => {
                 selectedUpdate(tab);
               }}
-              // selected={selectedTab.id === tab.id}
+              selected={selectedTab.id === tab.id}
             >
               <div className="flex flex-col content-center gap-4">
                 <Image src={tab.icon} alt="아이콘 이미지" />
@@ -60,7 +60,7 @@ const SelectSection = styled.div`
   height: 250px;
 `;
 
-const Tab = styled.div`
+const Tab = styled.div<{ selected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,10 +69,10 @@ const Tab = styled.div`
   height: 130px;
   border-bottom: 2px solid #ebebeb;
   cursor: pointer;
-`;
 
-// ${(props) =>
-//   props.selected &&
-//   css`
-//     border-color: #ff5f05;
-//   `}
+  ${(props) =>
+    props.selected &&
+    css`
+      border-color: #ff5f05;
+    `}
+`;
