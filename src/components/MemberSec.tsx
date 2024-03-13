@@ -47,19 +47,20 @@ export default function MemberSec() {
       {SERVICE_LIST.map((list, index) => {
         return (
           <ServiceContainer key={index}>
-            <InnerContainer isOdd={index % 2 === 1} isFirst={index === 0}>
-              <TextWrapper isOdd={index % 2 === 1}>
+            {/* <InnerContainer isOdd={index % 2 === 1} isFirst={index === 0}> */}
+            <InnerContainer index={index}>
+              <TextWrapper index={index}>
                 <Title>{list.title}</Title>
                 <SubTitle>{list.subTitle}</SubTitle>
                 <Description>{list.description}</Description>
               </TextWrapper>
 
-              <ImageWrapper isFirst={index === 0}>
+              <ImageWrapper index={index}>
                 <div className="flex">
                   {list.image.map((img, i) => {
                     return (
-                      <ImageStyle>
-                        <Image src={img} key={i} alt="앱 이미지" />
+                      <ImageStyle key={i}>
+                        <Image src={img} alt="앱 이미지" />
                       </ImageStyle>
                     );
                   })}
@@ -91,20 +92,20 @@ const ServiceContainer = styled.div`
   }
 `;
 
-const InnerContainer = styled.div<{ isOdd: boolean; isFirst: boolean }>`
+const InnerContainer = styled.div<{ index: number }>`
   display: flex;
   align-items: center;
   gap: 64px;
   white-space: pre-line;
 
   ${(props) =>
-    props.isOdd &&
+    props.index % 2 === 1 &&
     css`
       flex-direction: row-reverse;
     `}
 
   ${(props) =>
-    props.isFirst &&
+    props.index === 0 &&
     css`
       gap: 32px;
     `}
@@ -116,7 +117,7 @@ const InnerContainer = styled.div<{ isOdd: boolean; isFirst: boolean }>`
   }
 `;
 
-const TextWrapper = styled.div<{ isOdd: boolean }>`
+const TextWrapper = styled.div<{ index: number }>`
   min-width: 280px;
   @media (max-width: ${BREAK_POINT}) {
     text-align: center;
@@ -126,7 +127,7 @@ const TextWrapper = styled.div<{ isOdd: boolean }>`
     padding: 0px 32px;
 
     ${(props) =>
-      props.isOdd &&
+      props.index % 2 === 1 &&
       css`
         text-align: left;
         align-items: flex-start;
@@ -167,18 +168,14 @@ const Description = styled.div`
     margin-bottom: 32px;
   }
 `;
-const ImageWrapper = styled.div<{ isFirst: boolean }>`
+const ImageWrapper = styled.div<{ index: number }>`
   @media (max-width: ${BREAK_POINT}) {
     min-width: 360px;
     width: 100vw;
     overflow-x: auto;
 
-    /* .flex {
-      justify-content: center;
-    } */
-
     ${(props) =>
-      !props.isFirst &&
+      props.index !== 0 &&
       css`
         .flex {
           justify-content: center;

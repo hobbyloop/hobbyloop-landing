@@ -47,10 +47,10 @@ const P = styled.p`
   }
 `;
 
-const Button = styled.button<{ backgroundColor: string }>`
+const Button = styled.button<{ backgroundcolor: string }>`
   width: 216px;
   height: 50px;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   border-radius: 13px;
 `;
 
@@ -76,8 +76,8 @@ function InquiryForm() {
             세분화된 이용권, 예약, 스케줄 관리가 가능합니다
           </P>
           <ButtonWrapper>
-            <Button backgroundColor="#fddc3f">카카오톡 상담 바로가기</Button>
-            <Button backgroundColor="#FF5F05">업체 입점 신청 바로가기</Button>
+            <Button backgroundcolor="#fddc3f">카카오톡 상담 바로가기</Button>
+            <Button backgroundcolor="#FF5F05">업체 입점 신청 바로가기</Button>
           </ButtonWrapper>
         </Wrapper>
         <Form />

@@ -97,8 +97,8 @@ export default function CompanySec() {
       {/* 서비스 소개 */}
       {SERVICE_LIST.map((section, index) => {
         return (
-          <ServiceContainer key={section.id} isEven={index % 2 === 0}>
-            <InnerContainer isEven={index % 2 === 0}>
+          <ServiceContainer key={section.id} index={index}>
+            <InnerContainer index={index}>
               <TextWrapper>
                 <Title>{section.title}</Title>
                 <SubTitle>{section.subTitle}</SubTitle>
@@ -173,14 +173,14 @@ const Container = styled.div`
   min-width: 360px;
 `;
 
-const ServiceContainer = styled.div<{ isEven: boolean }>`
+const ServiceContainer = styled.div<{ index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   height: 810px;
-  background-color: ${(props) => !props.isEven && "#F5F5F7"};
+  background-color: ${(props) => props.index % 2 === 1 && "#F5F5F7"};
 
   @media (max-width: ${BREAK_POINT}) {
     background-color: inherit;
@@ -188,8 +188,8 @@ const ServiceContainer = styled.div<{ isEven: boolean }>`
   }
 `;
 
-const InnerContainer = styled.div<{ isEven: boolean }>`
-  text-align: ${(props) => props.isEven && "center"};
+const InnerContainer = styled.div<{ index: number }>`
+  text-align: ${(props) => props.index % 2 === 0 && "center"};
   white-space: pre-line;
 
   @media (max-width: ${BREAK_POINT}) {
