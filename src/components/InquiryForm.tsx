@@ -28,7 +28,12 @@ const H1 = styled.h1`
   color: #333;
   font-size: 40px;
   font-weight: 700;
-  margin-bottom: 45px;
+  line-height: 130%;
+
+  @media (max-width: 800px) {
+    font-size: 30px;
+    font-weight: 600;
+  }
 `;
 
 const P = styled.p`
@@ -38,7 +43,6 @@ const P = styled.p`
   font-weight: 500;
   line-height: 150%; /* 21px */
   letter-spacing: -0.28px;
-  margin-bottom: 34px;
   max-width: 337px;
 
   @media (max-width: 800px) {
@@ -69,7 +73,7 @@ function InquiryForm() {
   return (
     <Container>
       <InnerContainer>
-        <Wrapper>
+        <Wrapper className="flex flex-col gap-8">
           <H1>도입 문의</H1>
           <P>
             관리자/강사 어플리케이션과 웹페이지를 각각 따로 지원함으로써 더욱
