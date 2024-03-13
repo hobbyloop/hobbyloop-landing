@@ -9,19 +9,19 @@ const Container = styled.div`
   width: 100%;
   padding-top: 180px;
   min-width: 375px;
-
-  /* background-color: #ccc; */
 `;
 
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: lightcyan; */
   width: 55%;
 `;
 
 const Wrapper = styled.div`
-  /* background-color: lavender; */
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    text-align: center;
+  }
 `;
 
 const H1 = styled.h1`
@@ -47,10 +47,10 @@ const P = styled.p`
   }
 `;
 
-const Button = styled.button<{ backgroundcolor: string }>`
+const Button = styled.button<{ $backgroundColor: string }>`
   width: 216px;
   height: 50px;
-  background-color: ${(props) => props.backgroundcolor};
+  background-color: ${(props) => props.$backgroundColor};
   border-radius: 13px;
 `;
 
@@ -76,8 +76,8 @@ function InquiryForm() {
             세분화된 이용권, 예약, 스케줄 관리가 가능합니다
           </P>
           <ButtonWrapper>
-            <Button backgroundcolor="#fddc3f">카카오톡 상담 바로가기</Button>
-            <Button backgroundcolor="#FF5F05">업체 입점 신청 바로가기</Button>
+            <Button $backgroundColor="#fddc3f">카카오톡 상담 바로가기</Button>
+            <Button $backgroundColor="#FF5F05">업체 입점 신청 바로가기</Button>
           </ButtonWrapper>
         </Wrapper>
         <Form />
