@@ -71,7 +71,7 @@ const ButtonWrapper = styled.div`
 
 function InquiryForm() {
   return (
-    <Container>
+    <Container id="inquiry">
       <InnerContainer>
         <Wrapper className="flex flex-col gap-8">
           <H1>도입 문의</H1>
