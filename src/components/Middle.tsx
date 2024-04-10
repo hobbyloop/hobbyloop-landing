@@ -20,7 +20,7 @@ export default function Middle() {
   const selectedUpdate = useSelectedTabStore((state) => state.selectedUpdate);
 
   return (
-    <Container>
+    <Container id="service">
       <SelectSection>
         {TABS.map((tab) => {
           return (

@@ -97,17 +97,18 @@ export default function CompanySec() {
       {/* 서비스 소개 */}
       {SERVICE_LIST.map((section, index) => {
         return (
-          <ServiceContainer key={section.id} isEven={index % 2 === 0}>
-            <InnerContainer isEven={index % 2 === 0}>
-              <Title>{section.title}</Title>
-              <SubTitle>{section.subTitle}</SubTitle>
-              <Description>{section.description}</Description>
-              <Image
-                src={section.image}
-                alt="이미지"
-                width={740}
-                height={455}
-              />
+          <ServiceContainer key={section.id} $index={index}>
+            <InnerContainer $index={index}>
+              <TextWrapper>
+                <Title>{section.title}</Title>
+                <SubTitle>{section.subTitle}</SubTitle>
+                <Description>{section.description}</Description>
+              </TextWrapper>
+              <ImageWrapper>
+                <ImageStyle>
+                  <Image src={section.image} alt="이미지" className="image" />
+                </ImageStyle>
+              </ImageWrapper>
             </InnerContainer>
           </ServiceContainer>
         );
@@ -118,7 +119,7 @@ export default function CompanySec() {
         <p className="mt-[139px] mb-[53px] text-[40px] leading-[52px] font-bold">
           서비스 가격
         </p>
-        <div className="flex gap-[14px] mb-[50px]">
+        <ButtonWrapper>
           <ShortcutButton
             className="text-[#000] bg-[#FDDC3F] font-semibold"
             onClick={() => {}}
@@ -132,12 +133,12 @@ export default function CompanySec() {
           >
             업체 입점 신청 바로가기
           </ShortcutButton>
-        </div>
+        </ButtonWrapper>
         {PRICE_LIST.map((list) => {
           return (
             <PriceWrapper key={list.title}>
               <PriceTitle>{list.title}</PriceTitle>
-              <div className="flex gap-[16.89px]">
+              <PriceBoxWrapper>
                 {list.contents.map((priceList) => {
                   return (
                     <PriceBox key={priceList.title}>
@@ -153,7 +154,7 @@ export default function CompanySec() {
                     </PriceBox>
                   );
                 })}
-              </div>
+              </PriceBoxWrapper>
             </PriceWrapper>
           );
         })}
@@ -162,26 +163,44 @@ export default function CompanySec() {
   );
 }
 
+const BREAK_POINT = "800px";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  min-width: 360px;
 `;
 
-const ServiceContainer = styled.div<{ isEven: boolean }>`
+const ServiceContainer = styled.div<{ $index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   height: 810px;
-  background-color: ${(props) => !props.isEven && "#F5F5F7"};
+  background-color: ${(props) => props.$index % 2 === 1 && "#F5F5F7"};
+
+  @media (max-width: ${BREAK_POINT}) {
+    background-color: inherit;
+    height: 812px;
+  }
 `;
 
-const InnerContainer = styled.div<{ isEven: boolean }>`
-  text-align: ${(props) => props.isEven && "center"};
+const InnerContainer = styled.div<{ $index: number }>`
+  text-align: ${(props) => props.$index % 2 === 0 && "center"};
   white-space: pre-line;
+
+  @media (max-width: ${BREAK_POINT}) {
+    width: 100%;
+  }
+`;
+
+const TextWrapper = styled.div`
+  @media (max-width: ${BREAK_POINT}) {
+    padding: 0px 32px;
+  }
 `;
 
 const Title = styled.p`
@@ -198,6 +217,12 @@ const SubTitle = styled.div`
   font-weight: 600;
   color: #333;
   margin-bottom: 30px;
+
+  @media (max-width: ${BREAK_POINT}) {
+    font-size: 30px;
+    line-height: 39px;
+    margin-bottom: 32px;
+  }
 `;
 
 const Description = styled.div`
@@ -208,8 +233,42 @@ const Description = styled.div`
   margin-bottom: 60px;
 `;
 
+const ImageWrapper = styled.div`
+  @media (max-width: ${BREAK_POINT}) {
+    width: 100%;
+    justify-content: center;
+    overflow-x: auto;
+  }
+`;
+
+const ImageStyle = styled.div`
+  position: relative;
+  width: 740px;
+
+  @media (max-width: ${BREAK_POINT}) {
+    min-width: 777px;
+  }
+`;
+
 const ServicePriceSection = styled.div`
   height: 1217px;
+
+  @media (max-width: ${BREAK_POINT}) {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 14px;
+  margin-bottom: 50px;
+
+  @media (max-width: ${BREAK_POINT}) {
+    flex-direction: column;
+  }
 `;
 
 const ShortcutButton = styled.button`
@@ -232,6 +291,11 @@ const PriceWrapper = styled.div`
   border-radius: 32px;
   background-color: #f5f5f7;
   margin-bottom: 26px;
+
+  @media (max-width: ${BREAK_POINT}) {
+    width: 335px;
+    height: 863px;
+  }
 `;
 
 const PriceTitle = styled.div`
@@ -247,6 +311,15 @@ const PriceTitle = styled.div`
   color: #fff;
   font-size: 26px;
   font-weight: 800;
+`;
+
+const PriceBoxWrapper = styled.div`
+  display: flex;
+  gap: 16.89px;
+
+  @media (max-width: ${BREAK_POINT}) {
+    flex-direction: column;
+  }
 `;
 
 const PriceBox = styled.div`

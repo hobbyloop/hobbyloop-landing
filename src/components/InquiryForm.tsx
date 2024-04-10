@@ -9,26 +9,31 @@ const Container = styled.div`
   width: 100%;
   padding-top: 180px;
   min-width: 375px;
-
-  /* background-color: #ccc; */
 `;
 
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: lightcyan; */
   width: 55%;
 `;
 
 const Wrapper = styled.div`
-  /* background-color: lavender; */
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    text-align: center;
+  }
 `;
 
 const H1 = styled.h1`
   color: #333;
   font-size: 40px;
   font-weight: 700;
-  margin-bottom: 45px;
+  line-height: 130%;
+
+  @media (max-width: 800px) {
+    font-size: 30px;
+    font-weight: 600;
+  }
 `;
 
 const P = styled.p`
@@ -38,7 +43,6 @@ const P = styled.p`
   font-weight: 500;
   line-height: 150%; /* 21px */
   letter-spacing: -0.28px;
-  margin-bottom: 34px;
   max-width: 337px;
 
   @media (max-width: 800px) {
@@ -47,10 +51,10 @@ const P = styled.p`
   }
 `;
 
-const Button = styled.button<{ backgroundColor: string }>`
+const Button = styled.button<{ $backgroundColor: string }>`
   width: 216px;
   height: 50px;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.$backgroundColor};
   border-radius: 13px;
 `;
 
@@ -67,17 +71,17 @@ const ButtonWrapper = styled.div`
 
 function InquiryForm() {
   return (
-    <Container>
+    <Container id="inquiry">
       <InnerContainer>
-        <Wrapper>
+        <Wrapper className="flex flex-col gap-8">
           <H1>도입 문의</H1>
           <P>
             관리자/강사 어플리케이션과 웹페이지를 각각 따로 지원함으로써 더욱
             세분화된 이용권, 예약, 스케줄 관리가 가능합니다
           </P>
           <ButtonWrapper>
-            <Button backgroundColor="#fddc3f">카카오톡 상담 바로가기</Button>
-            <Button backgroundColor="#FF5F05">업체 입점 신청 바로가기</Button>
+            <Button $backgroundColor="#fddc3f">카카오톡 상담 바로가기</Button>
+            <Button $backgroundColor="#FF5F05">업체 입점 신청 바로가기</Button>
           </ButtonWrapper>
         </Wrapper>
         <Form />

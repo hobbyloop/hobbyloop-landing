@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/commons/Header";
 import Footer from "@/components/commons/Footer";
+import Header from "@/components/commons/Header";
+import StyledComponentsRegistry from "@/lib/registry";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
-import StyledJsxRegistry from "@/lib/registry";
+import "./globals.css";
 
 const pre = localFont({
   src: "../../public/font/PretendardVariable.ttf",
@@ -24,13 +24,13 @@ export default function RootLayout({
     <html lang="ko" className={`${pre.variable}`}>
       <head></head>
       <body className="relative mx-auto flex w-full flex-col min-w-[360px]">
-        <StyledJsxRegistry>
+        <StyledComponentsRegistry>
           <main className="relative grow">
             <Header />
             <div className="">{children}</div>
           </main>
           <Footer />
-        </StyledJsxRegistry>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

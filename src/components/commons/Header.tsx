@@ -9,9 +9,9 @@ type NavMenu = {
 };
 
 const nav_menu: NavMenu[] = [
-  { id: 1, navName: "플랫폼소개", href: "" },
-  { id: 2, navName: "서비스소개", href: "" },
-  { id: 3, navName: "가격도입문의", href: "" },
+  { id: 1, navName: "플랫폼소개", href: "#platform" },
+  { id: 2, navName: "서비스소개", href: "#service" },
+  { id: 3, navName: "가격도입문의", href: "#inquiry" },
 ];
 
 export default function Header() {
