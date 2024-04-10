@@ -3,7 +3,7 @@ import VisualButton from "./VisualButton";
 export default function VisualTextArticle() {
   return (
     <>
-      <div className="md:row-[1/2] flex md:gap-[40px] md:justify-normal justify-center w-full">
+      <div className="md:row-[1/2] flex md:gap-[40px] md:justify-normal justify-center w-full md:mt-0 mt-[60px]">
         <div className="flex flex-col w-full md:gap-[54px] gap-[32px] items-end text-right ">
           <p className="text-neutral-10 md:text-5xl text-3xl font-bold md:leading-[1.5] tracking-wide">
             언제 어디서든 <br />
