@@ -4,7 +4,7 @@ import { sendContactEmail } from "@/service/contact";
 import { ChangeEvent, FormEvent, useState } from "react";
 import styled from "styled-components";
 
-type Form = {
+export type FormProps = {
   representative: string;
   companyName: string;
   buisnessman: string;
@@ -21,7 +21,7 @@ const DEFAULT_DATA = {
   message: "",
 };
 function Form() {
-  const [form, setForm] = useState<Form>(DEFAULT_DATA);
+  const [form, setForm] = useState<FormProps>(DEFAULT_DATA);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,14 +30,13 @@ function Form() {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log("form?", form);
     sendContactEmail(form)
       .then(() => {
-        console.log("전송 썩세스");
+        console.log("success");
         setForm(DEFAULT_DATA);
       })
       .catch((err) => {
-        console.log("전송 실패실패실패", err);
+        console.log("error", err);
       });
   };
 
@@ -47,37 +46,75 @@ function Form() {
         <label>
           대표자명<RequiredIndicator>*</RequiredIndicator>
         </label>
-        <Input required name="representative" onChange={onChange} />
+        <Input
+          required
+          name="representative"
+          id="representative"
+          value={form.representative}
+          onChange={onChange}
+        />
       </Wrapper>
       <Wrapper>
         <label>
           업체명<RequiredIndicator>*</RequiredIndicator>
         </label>
-        <Input required name="companyName" onChange={onChange} />
+        <Input
+          required
+          name="companyName"
+          id="companyName"
+          value={form.companyName}
+          onChange={onChange}
+        />
       </Wrapper>
       <Wrapper>
         <label>
           사업자 등록번호<RequiredIndicator>*</RequiredIndicator>
         </label>
-        <Input required name="buisnessman" onChange={onChange} />
+        <Input
+          required
+          name="buisnessman"
+          id="buisnessman"
+          onChange={onChange}
+          type="number"
+          value={form.buisnessman}
+        />
       </Wrapper>
       <Wrapper>
         <label>
           전화번호<RequiredIndicator>*</RequiredIndicator>
         </label>
-        <Input required name="phone" onChange={onChange} />
+        <Input
+          required
+          name="phone"
+          id="phone"
+          onChange={onChange}
+          value={form.phone}
+        />
       </Wrapper>
       <Wrapper>
         <label>
           이메일<RequiredIndicator>*</RequiredIndicator>
         </label>
-        <Input required name="email" onChange={onChange} />
+        <Input
+          required
+          name="email"
+          type="text"
+          onChange={onChange}
+          id="email"
+          value={form.email}
+        />
       </Wrapper>
       <Wrapper>
         <label>
           문의내용<RequiredIndicator>*</RequiredIndicator>
         </label>
-        <TextArea required name="message" onChange={onChange} />
+        <TextArea
+          required
+          name="message"
+          onChange={onChange}
+          id="message"
+          value={form.message}
+        />
         <InquiryButtonWrapper>
           <InquiryButton type="submit">문의하기</InquiryButton>
         </InquiryButtonWrapper>
