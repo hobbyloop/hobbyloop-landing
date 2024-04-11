@@ -1,5 +1,6 @@
 "use client";
 
+import { sendContactEmail } from "@/service/contact";
 import { ChangeEvent, FormEvent, useState } from "react";
 import styled from "styled-components";
 
@@ -29,8 +30,17 @@ function Form() {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form?", form);
+    // console.log("form?", form);
+    sendContactEmail(form)
+      .then(() => {
+        console.log("전송 썩세스");
+        setForm(DEFAULT_DATA);
+      })
+      .catch((err) => {
+        console.log("전송 실패실패실패", err);
+      });
   };
+
   return (
     <FormContainer onSubmit={onSubmit}>
       <Wrapper>
