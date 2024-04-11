@@ -1,9 +1,9 @@
-import { Form } from "@/components/commons/Form";
+import { FormProps } from "@/components/commons/Form";
 import nodemailer from "nodemailer";
 
 // nodemailer 사용
 export const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  host: "smtp.gmail.com",
   port: 465,
   secure: true,
   auth: {
@@ -19,17 +19,17 @@ export async function sendEmail({
   phone,
   email,
   message,
-}: Form) {
+}: FormProps) {
   const mailData = {
     to: process.env.AUTH_USER,
-    representative,
-    companyName,
-    phone,
-    email,
-    message,
+    subject: `하비루프 문의하기 ${companyName}`,
     html: `
-        대표자명:${buisnessman}
-        핸드폰번호:${phone}
+        <h3>대표자명 :${representative}</h3>
+        <h3>업체명 :${companyName}</h3>
+        <h3>사업자 등록번호 :${buisnessman}</h3>
+        <h3>핸드폰번호 :${phone}</h3>
+        <h3>이메일 주소 :${email}</h3>
+        <h3>문의내용:${message}</h3>
     `,
   };
   // 전송
