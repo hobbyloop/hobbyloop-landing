@@ -1,7 +1,80 @@
 "use client";
 
+import { ChangeEvent, FormEvent, useState } from "react";
 import styled from "styled-components";
 
+type Form = {
+  representative: string;
+  companyName: string;
+  buisnessman: string;
+  phone: string;
+  email: string;
+  message: string;
+};
+const DEFAULT_DATA = {
+  representative: "",
+  companyName: "",
+  buisnessman: "",
+  phone: "",
+  email: "",
+  message: "",
+};
+function Form() {
+  const [form, setForm] = useState<Form>(DEFAULT_DATA);
+
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm((forms) => ({ ...forms, [name]: value }));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("form?", form);
+  };
+  return (
+    <FormContainer onSubmit={onSubmit}>
+      <Wrapper>
+        <label>
+          대표자명<RequiredIndicator>*</RequiredIndicator>
+        </label>
+        <Input required name="representative" onChange={onChange} />
+      </Wrapper>
+      <Wrapper>
+        <label>
+          업체명<RequiredIndicator>*</RequiredIndicator>
+        </label>
+        <Input required name="companyName" onChange={onChange} />
+      </Wrapper>
+      <Wrapper>
+        <label>
+          사업자 등록번호<RequiredIndicator>*</RequiredIndicator>
+        </label>
+        <Input required name="buisnessman" onChange={onChange} />
+      </Wrapper>
+      <Wrapper>
+        <label>
+          전화번호<RequiredIndicator>*</RequiredIndicator>
+        </label>
+        <Input required name="phone" onChange={onChange} />
+      </Wrapper>
+      <Wrapper>
+        <label>
+          이메일<RequiredIndicator>*</RequiredIndicator>
+        </label>
+        <Input required name="email" onChange={onChange} />
+      </Wrapper>
+      <Wrapper>
+        <label>
+          문의내용<RequiredIndicator>*</RequiredIndicator>
+        </label>
+        <TextArea required name="message" onChange={onChange} />
+        <InquiryButtonWrapper>
+          <InquiryButton type="submit">문의하기</InquiryButton>
+        </InquiryButtonWrapper>
+      </Wrapper>
+    </FormContainer>
+  );
+}
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -65,51 +138,5 @@ const InquiryButtonWrapper = styled.div`
   justify-content: center;
   margin-bottom: 160px;
 `;
-
-function Form() {
-  return (
-    <FormContainer>
-      <Wrapper>
-        <label>
-          대표자명<RequiredIndicator>*</RequiredIndicator>
-        </label>
-        <Input required />
-      </Wrapper>
-      <Wrapper>
-        <label>
-          업체명<RequiredIndicator>*</RequiredIndicator>
-        </label>
-        <Input required />
-      </Wrapper>
-      <Wrapper>
-        <label>
-          사업자 등록번호<RequiredIndicator>*</RequiredIndicator>
-        </label>
-        <Input required />
-      </Wrapper>
-      <Wrapper>
-        <label>
-          전화번호<RequiredIndicator>*</RequiredIndicator>
-        </label>
-        <Input required />
-      </Wrapper>
-      <Wrapper>
-        <label>
-          이메일<RequiredIndicator>*</RequiredIndicator>
-        </label>
-        <Input required />
-      </Wrapper>
-      <Wrapper>
-        <label>
-          문의내용<RequiredIndicator>*</RequiredIndicator>
-        </label>
-        <TextArea required />
-        <InquiryButtonWrapper>
-          <InquiryButton>문의하기</InquiryButton>
-        </InquiryButtonWrapper>
-      </Wrapper>
-    </FormContainer>
-  );
-}
 
 export default Form;
