@@ -125,7 +125,7 @@ const RequiredIndicator = styled.span`
 `;
 
 const InquiryButton = styled.button`
-  background-color: rgba(255, 95, 5, 0.5);
+  background-color: #ff5f05;
   width: 170px;
   height: 70px;
   border-radius: 20px;
