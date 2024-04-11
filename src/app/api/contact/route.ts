@@ -6,8 +6,7 @@ import { sendEmail } from "@/service/email";
 // 그래서 서버에서 사용할수있는 nodemailer를 사용할수 있는 것
 export async function POST(req: Request) {
   const body = await req.json();
-  //   const { representative, companyName, buisnessman, phone, email, message } =
-  //     req.body;
+
   return sendEmail(body)
     .then(() => {
       return new Response(
