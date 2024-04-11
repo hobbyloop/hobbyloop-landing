@@ -1,4 +1,5 @@
 export async function sendContactEmail(email) {
+  // api route에 이메일 전송을 위해서 요청 보내는 함수
   const responsive = await fetch("/api/contact", {
     method: "POST",
     body: JSON.stringify(email),
