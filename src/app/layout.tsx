@@ -11,7 +11,7 @@ const pre = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "하비루프 landing page",
+  title: "하비루프",
   description: "하피루프 landing page 입니다.",
 };
 
@@ -21,7 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${pre.variable}`}>
+    <html
+      lang="ko"
+      className={`${pre.variable}`}
+    >
       <head></head>
       <body className="relative mx-auto flex w-full flex-col min-w-[360px]">
         <StyledComponentsRegistry>

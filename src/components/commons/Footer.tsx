@@ -70,7 +70,7 @@ const Hr = styled.div`
 export default function Footer() {
   return (
     <footer className="bg-neutral-600 md:pt-[64px] md:pb-[70px] py-[72px]">
-      <AppDownloadFooter>
+      {/* <AppDownloadFooter>
         <DownLoadTitle>
           이 모든 서비스를
           <br /> 하비루프에서 경험 해보세요!
@@ -81,26 +81,32 @@ export default function Footer() {
           <Button>App Store</Button>
         </ButtonWrapper>
       </AppDownloadFooter>
-      <Hr />
+      <Hr /> */}
       <div className="m-full md:max-w-[527px] mx-auto max-w-[335px]">
         <h1 className="text-base text-neutral-10 font-bold ">사업자 정보</h1>
         <ul className="text-xs text-neutral-10 md:pt-[15px] pb-[24px] flex w-[317px] gap-[15px] flex-wrap">
           {businessInfor?.map(({ id, title, text }) => (
-            <li key={id} className="flex gap-[6px] li">
+            <li
+              key={id}
+              className="flex gap-[6px] li"
+            >
               <h4 className="font-bold text-neutral-10">{title}</h4>
               <span className="text-neutral-90">{text}</span>
             </li>
           ))}
         </ul>
-        <div className="flex gap-[20px]">
+        {/* <div className="flex gap-[20px]">
           {businessLink?.map(({ id, linkName, link }) => (
             <div key={id}>
-              <Link href={link} className="font-bold text-xs text-neutral-10">
+              <Link
+                href={link}
+                className="font-bold text-xs text-neutral-10"
+              >
                 {linkName}
               </Link>
             </div>
           ))}
-        </div>
+        </div> */}
         {/*  */}
         <div className="text-neutral-90 text-xs my-[32px] gap-[17px] flex flex-col">
           <p>
@@ -116,7 +122,12 @@ export default function Footer() {
         </div>
         {/*  */}
         <div>
-          <Image src={logo} alt="로고" width={30} height={20} />
+          <Image
+            src={logo}
+            alt="로고"
+            width={30}
+            height={20}
+          />
           <h4 className="text-neutral-90 text-xs">
             Hobbyloop Inc. Ⓒ 2023 All rights reserved.
           </h4>
