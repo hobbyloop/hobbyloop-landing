@@ -1,3 +1,5 @@
+"use client";
+
 import CompanySec from "@/components/CompanySec";
 import Form from "@/components/commons/Form";
 
