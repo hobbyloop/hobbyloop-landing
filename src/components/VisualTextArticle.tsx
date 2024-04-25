@@ -1,4 +1,4 @@
-import VisualButton from "./VisualButton";
+import VisualButton from './VisualButton';
 
 export default function VisualTextArticle() {
   return (
@@ -7,7 +7,7 @@ export default function VisualTextArticle() {
         <div className="flex flex-col w-full md:gap-[54px] gap-[32px] items-end text-right ">
           <p className="text-neutral-10 md:text-5xl text-3xl font-bold md:leading-[1.5] tracking-wide">
             언제 어디서든 <br />
-            <span className="text-neutral-500">결제</span>와
+            <span className="text-neutral-500">결제</span>와&nbsp;
             <span className="text-neutral-500">수업 예약</span>을 한 번에
           </p>
           <p className="whitespace-pre-wrap	text-neutral-80 text-base md:text-[19px] md:leading-[1.5]">
